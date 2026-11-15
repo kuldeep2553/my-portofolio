@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuldeep | Personal Portfolio</title>
+
+  <!-- favicon (browser tab ka chhota icon) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%236f4a2f'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='36' font-weight='bold' text-anchor='middle' fill='%23f6ecdc'%3EK%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* ---------- Basic setup ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #3b2417;
+      /* brown gradient background with soft stripes */
+      background-color: #4a2e1c;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 14px),
+        linear-gradient(160deg, #6f4a2f 0%, #4a2e1c 50%, #2a170c 100%);
+      background-attachment: fixed;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      color: #f6ecdc;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      color: #f0c98d;
+    }
+
+    .tagline {
+      margin: 8px 0 24px;
+      font-style: italic;
+      color: #e8d5b9;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.25);
+      border-radius: 40px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    nav a {
+      color: #f6ecdc;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      background-color: #b9814a;
+      color: #fff;
+    }
+
+    /* ---------- Layout ---------- */
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    .card {
+      background-color: #f6ecdc;
+      border-left: 8px solid #b9814a;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.8rem;
+      color: #6f4a2f;
+      border-bottom: 2px dashed #b9814a;
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+      color: #8b5a2b;
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: #a0521d;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: #5a2d0c;
+    }
+
+    /* ---------- About section ---------- */
+    .about-box {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid #6f4a2f;
+      background-color: #e8d5b9;
+      flex-shrink: 0;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .highlight {
+      color: #b5451b;
+      font-weight: bold;
+    }
+
+    /* ---------- Tables ---------- */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .biodata th {
+      text-align: left;
+      width: 38%;
+      background-color: #e8d5b9;
+      color: #3b2417;
+      padding: 8px 12px;
+      border: 1px solid #c9a87a;
+    }
+
+    .biodata td {
+      padding: 8px 12px;
+      border: 1px solid #c9a87a;
+    }
+
+    .data-table caption {
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      text-align: left;
+      padding-bottom: 8px;
+      color: #6f4a2f;
+    }
+
+    .data-table th {
+      background-color: #6f4a2f;
+      color: #f6ecdc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .data-table td {
+      padding: 10px;
+      border-bottom: 1px solid #c9a87a;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+      background-color: #ecdcc3;
+    }
+
+    /* ---------- Lists ---------- */
+    .two-columns {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    ul li::marker {
+      color: #b9814a;
+    }
+
+    ol li::marker {
+      color: #a0521d;
+      font-weight: bold;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #8b5a2b;
+    }
+
+    /* ---------- Map ---------- */
+    .map-wrap {
+      border: 4px solid #6f4a2f;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #college-map {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      display: block;
+    }
+
+    /* ---------- Buttons ---------- */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      background-color: #6f4a2f;
+      color: #f6ecdc;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 2px solid #6f4a2f;
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #b9814a;
+      border-color: #b9814a;
+      color: #fff;
+    }
+
+    .btn-light {
+      background-color: transparent;
+      color: #6f4a2f;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #e8d5b9;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- Mobile view ---------- */
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+
+      .about-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Header and navigation ===== -->
+  <header id="top">
+    <!-- EDIT HERE: apna naam -->
+    <h1>Kuldeep</h1>
+    <p class="tagline"> &bull;​"Freshman at IIIT Raichur | CS Undergrad | Writing code today to architect the digital innovations of tomorrow." </p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#interests">Interests</a>
+      <a href="#location">Find me</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== About / Biodata ===== -->
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <div class="about-box">
+        <!-- EDIT HERE: apni photo lagani ho to src="photo.jpg" likho
+             (photo.jpg isi file ke saath same folder me rakho) -->
+        <img class="profile-pic" src="Kuldeep photo.jpeg" alt="Kuldeep Photo">
+                     <div class="about-text">
+          <p>Hello! My name is <b>Kuldeep</b>. I am a <i>first-year</i> Computer Science student at
+          <u>IIIT Raichur</u>.  I have recently embarked on my coding journey with a strong ambition to master software development and explore the fascinating world of cybersecurity and ethical hacking. Driven by curiosity and a problem-solving mindset, I love diving deep into how systems work, writing clean code, and building secure digital solutions from the ground up.</p>
+      
+
+          <h3>Biodata</h3>
+          <!-- EDIT HERE: biodata ki details -->
+          <table class="biodata">
+            <tr><th>Name</th><td>Kuldeep</td></tr>
+            <tr><th>ID</th><td>cs26b1024</td></tr>
+            <tr><th>College</th><td>IIIT Raichur</td></tr>
+            <tr><th>Year</th><td>First Year (B.Tech)</td></tr>
+            <tr><th>Course</th><td>Computer Science and Engineering.</td></tr>
+            
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Education table ===== -->
+    <!-- EDIT HERE: 10th aur 12th ke school ke naam -->
+    <section id="education" class="card">
+      <h2>Education</h2>
+      <table class="data-table">
+        <caption>My academic details</caption>
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Institute</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>B.Tech (Computer Science and Engineering)</td>
+            <td>IIIT Raichur</td>
+            <td>Pursuing, 1st year</td>
+          </tr>
+          <tr>
+            <td>Senior Secondary (12th)</td>
+            <td>Suraj Public School</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>Secondary (10th)</td>
+            <td>The Gurukul Jyotisar</td>
+            <td>Completed</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== Skills (unordered list) and plan (ordered list) ===== -->
+    <section id="skills" class="card">
+      <h2>Skills and Learning</h2>
+      <div class="two-columns">
+        <div class="column">
+          <h3>What I am learning now</h3>
+          <ul>
+            <li>HTML (making web pages)</li>
+            <li>CSS (colours, fonts and layout)</li>
+            <li>Basic programming concepts (C-language)</li>
+            <li>Digital Computer Design</li>
+            <li>Signals and Systems</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>My plan for this year</h3>
+          <ol>
+            <li>Finish the basics of HTML and CSS</li>
+            <li>Learn a programming language properly</li>
+            <li>Build apps </li>
+            <li>Learn about Neural networking</li>
+            <li>learn about atheical Hacking</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Interests ===== -->
+    <!-- EDIT HERE: apne asli hobbies likho -->
+    <section id="interests" class="card">
+      <h2>Interests</h2>
+      <p>Apart from studies, I enjoy these things:</p>
+      <ul>
+        <li>Coding and exploring new technology</li>
+        <li>Hacking</li>
+        <li>Solving puzzles and logical problems</li>
+        <li>Playing Cricket</li>
+      </ul>
+      <p>Want to learn along with me? These are good places to start:
+        <a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML</a> and
+        <a href="https://www.w3schools.com/css/" target="_blank">W3Schools CSS</a>.</p>
+    </section>
+
+    <!-- ===== Map (iframe) ===== -->
+    <section id="location" class="card">
+      <h2>Where I Study</h2>
+      <p>My college, IIIT Raichur, is in Raichur, Karnataka.</p>
+      <div class="map-wrap">
+        <iframe
+          id="college-map"
+          title="Map showing IIIT Raichur"
+          src="https://www.google.com/maps?q=IIIT+Raichur&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- ===== Contact + buttons ===== -->
+    <!-- EDIT HERE: apna email aur GitHub link -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Thanks for visiting my page! You can reach me using the buttons below.</p>
+        <div class="button-row"></div>
+        <a class="btn" href="mailto:kdgurjar2553@gmail.com">Send Email</a>
+        
+        <a class="btn btn-light" href="#top">Back to top</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Kuldeep | Crafted with clean code and big ambitions from IIIT Raichur | Turning Logic into Reality</p>
+  </footer>
+
+</body>
+</html>
